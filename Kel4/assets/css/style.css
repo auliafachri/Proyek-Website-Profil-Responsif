@@ -1,0 +1,353 @@
+/* Nama Studio — HTML5 + CSS3 murni. Font: system stack (tanpa lisensi). */
+:root{--pad:clamp(16px,3vw,40px);--gap:clamp(12px,1.6vw,24px);--sec:clamp(80px,14vw,200px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--page-bg);color:var(--text-primary);font:400 clamp(15px,1.2vw,18px)/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto;width:100%}
+figure{margin:0}ul,ol{list-style:none;margin:0;padding:0}
+a{color:inherit;text-decoration:none}
+a:focus-visible,label:focus-visible,input:focus-visible+label{outline:2px solid var(--accent);outline-offset:4px}.site-header :focus-visible,.site-header input:focus-visible+label{outline-color:currentColor}::selection{background:var(--accent);color:var(--page-bg)}
+.skip{position:absolute;left:-999px;top:0;background:var(--text-primary);color:var(--page-bg);padding:8px 12px;z-index:100}.skip:focus{left:0}
+.label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin:0}
+.mega{font-size:clamp(56px,15vw,260px);line-height:.88;letter-spacing:-.045em;font-weight:600;margin:0}
+.big{font-size:clamp(28px,5vw,80px);line-height:1;letter-spacing:-.03em;font-weight:500;margin:0}
+section{padding:var(--sec) var(--pad) 0}
+/* header */
+.site-header{position:fixed;inset:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);z-index:50;mix-blend-mode:difference;color:#fff}
+.wordmark{font-weight:600;letter-spacing:-.02em;font-size:18px}.wordmark sup{font-size:9px}
+nav ul{display:flex;gap:clamp(16px,2.4vw,36px)}
+nav a{font-size:13px;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s}
+nav a:hover,nav a:focus-visible,nav a[aria-current]{border-color:currentColor}
+.menu-toggle,.menu-btn{display:none}
+/* hero */
+.hero{padding-top:90px;min-height:100svh;display:grid;grid-template-rows:auto auto 1fr auto;gap:var(--gap)}
+.hero-top{display:flex;gap:var(--gap);justify-content:space-between}
+.hero-media{min-height:0;overflow:hidden;border-top:1px solid var(--line-color)}
+.hero-media img{height:100%;max-height:60vh;object-fit:cover}
+.hero-foot{display:flex;justify-content:space-between;font-size:13px;margin:0;padding-bottom:var(--pad)}
+.hero-foot a:hover{text-decoration:underline}
+/* intro */
+.intro .big{max-width:18ch;margin:24px 0 clamp(40px,6vw,96px)}
+.intro-cols{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start;border-top:1px solid var(--line-color);padding-top:var(--gap)}
+.intro-cols>p{grid-column:1/5}.intro-cols figure{grid-column:6/10}.intro-cols .meta-list{grid-column:11/13}
+.meta-list li{border-bottom:1px solid var(--line-color);padding:10px 0;display:flex;flex-direction:column;gap:2px}
+.meta-list.row{flex-direction:row;gap:24px}.meta-list.row li{border:0}
+/* work grid */
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(40px,6vw,96px) var(--gap);margin-top:24px}
+.work a{display:block}.work figure{overflow:hidden;background:#1b1b1a}
+.work img{transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.work a:hover img,.work a:focus-visible img{transform:scale(1.04);opacity:.85}
+.work-meta{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;padding-top:10px;border-bottom:1px solid transparent}
+.work-meta h3{margin:0;font-size:clamp(16px,1.6vw,24px);font-weight:500;letter-spacing:-.01em}
+.work a:hover h3{text-decoration:underline}
+.w-a{grid-column:span 5}.w-b{grid-column:span 7}.w-c{grid-column:span 7}.w-d{grid-column:span 5}
+.work:nth-child(even){margin-top:clamp(0px,8vw,120px)}
+.more{margin:48px 0 0;display:flex;gap:24px;flex-wrap:wrap}.more a{border-bottom:1px solid var(--text-primary)}
+/* approach */
+.services{border-top:1px solid var(--line-color);margin-top:24px}
+.services li{display:grid;grid-template-columns:1fr 6fr 5fr;gap:var(--gap);padding:28px 0;border-bottom:1px solid var(--line-color);align-items:baseline;transition:padding-left .3s}
+.services li:hover{padding-left:12px}
+.services h3{margin:0;font-size:clamp(24px,4vw,64px);line-height:1;letter-spacing:-.03em;font-weight:500}.services p{margin:0;color:var(--text-secondary)}
+/* bio / team */
+.bio-head{padding-top:130px;display:flex;flex-direction:column;gap:24px}
+.team{display:flex;flex-direction:column;gap:var(--sec)}
+.member{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:end}
+.member figure{overflow:hidden;background:#1b1b1a}
+.member-text{display:flex;flex-direction:column;gap:10px}
+.member-text h3{margin:0;font-size:clamp(32px,5vw,80px);line-height:.95;letter-spacing:-.035em;font-weight:500}
+.member-text p{margin:0;max-width:44ch}.links{display:flex;gap:16px;margin-top:8px!important}.links a{border-bottom:1px solid var(--text-primary)}.links a:hover{opacity:.6}
+.m1 figure{grid-column:1/6}.m1 .member-text{grid-column:7/12}
+.m2 figure{grid-column:6/13;order:2}.m2 .member-text{grid-column:1/5;order:1}
+.m3 figure{grid-column:3/7}.m3 .member-text{grid-column:8/13;align-self:start}
+.m4 figure{grid-column:1/9}.m4 .member-text{grid-column:9/13}
+.m5 figure{grid-column:8/12;order:2}.m5 .member-text{grid-column:2/7;order:1}
+.timeline{margin-top:24px;border-top:1px solid var(--line-color)}
+.timeline li{display:grid;grid-template-columns:4fr 8fr;gap:var(--gap);padding:24px 0;border-bottom:1px solid var(--line-color);align-items:baseline}
+.timeline p{margin:0}.num{font-size:clamp(40px,8vw,140px);letter-spacing:-.05em;line-height:.9;font-weight:600}
+.recog .big{max-width:22ch;margin:24px 0}
+.caps{display:flex;flex-wrap:wrap;gap:10px}.caps li{border:1px solid var(--text-primary);padding:6px 14px;border-radius:999px;font-size:13px}
+/* table */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:640px}
+caption{text-align:left;padding-bottom:16px}
+th,td{text-align:left;padding:18px 12px 18px 0;border-bottom:1px solid var(--line-color);font-weight:400;vertical-align:top}
+thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary)}
+tbody th{font-size:clamp(16px,1.8vw,26px);font-weight:500}
+tbody tr:hover{background:#171716}
+/* contact + footer */
+.contact{padding-bottom:var(--sec)}
+.contact .mega{margin:24px 0}.contact .mega a{border-bottom:.04em solid transparent;transition:border-color .2s}
+.contact .mega a:hover,.contact .mega a:focus-visible{border-color:var(--text-primary)}
+.contact-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+.lead{grid-column:1/6;margin:0;font-size:clamp(18px,2vw,28px);line-height:1.2}.contact-grid .meta-list{grid-column:7/13}
+.meta-list a{border-bottom:1px solid var(--text-secondary);width:fit-content}.meta-list a:hover{border-color:var(--text-primary)}
+.site-footer{display:flex;justify-content:space-between;gap:var(--gap);flex-wrap:wrap;padding:20px var(--pad);border-top:1px solid var(--line-color);font-size:13px;color:var(--text-secondary)}
+.site-footer p{margin:0}.site-footer ul{display:flex;gap:20px}.site-footer a:hover{color:var(--text-primary)}
+/* tablet */
+@media(max-width:900px){
+.intro-cols>p{grid-column:1/7}.intro-cols figure{grid-column:7/13}.intro-cols .meta-list{grid-column:1/13}
+.work-grid{grid-template-columns:repeat(2,1fr)}.w-a,.w-b,.w-c,.w-d{grid-column:span 1}.work:nth-child(even){margin-top:0}
+.services li{grid-template-columns:1fr 5fr}.services p{grid-column:2}
+.member figure,.member-text,.m2 figure,.m2 .member-text,.m3 figure,.m3 .member-text,.m4 figure,.m4 .member-text,.m5 figure,.m5 .member-text{grid-column:1/13;order:0}
+.m3 figure,.m5 figure{grid-column:1/9}
+.lead,.contact-grid .meta-list{grid-column:1/13}}
+/* mobile */
+@media(max-width:640px){
+.menu-btn{display:block;font-size:13px;text-transform:uppercase;cursor:pointer;z-index:60}.menu-btn span+span{display:none}
+.menu-toggle:checked~.menu-btn span:first-child{display:none}.menu-toggle:checked~.menu-btn span+span{display:inline}
+.site-header nav{position:fixed;inset:0;background:var(--overlay-color);color:var(--on-overlay);display:none;padding:90px var(--pad)}
+.menu-toggle:checked~nav{display:block}
+nav ul{flex-direction:column;gap:8px}nav a{font-size:clamp(36px,12vw,56px);text-transform:none;letter-spacing:-.04em;border:0}
+.hero-top span:nth-child(2){display:none}
+.intro-cols>p,.intro-cols figure{grid-column:1/13}
+.work-grid{grid-template-columns:1fr}
+.services li{grid-template-columns:1fr}.services p{grid-column:1}
+.timeline li{grid-template-columns:1fr}
+.m3 figure,.m5 figure{grid-column:1/13}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* ===== ANIMATIONS (CSS only, no HTML/JS changes) ===== */
+@keyframes rise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes reveal{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes settle{from{transform:scale(1.18)}to{transform:scale(1)}}
+@keyframes progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media (prefers-reduced-motion:no-preference){
+  /* 1. On page load */
+  .site-header{animation:fade .8s both}
+  .hero .mega{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
+  .hero-top,.hero-foot{animation:fade 1.2s .5s both}
+  .hero-media,.bio-head .mega{animation:reveal 1.3s .25s cubic-bezier(.7,0,.2,1) both}
+  .hero-media img{animation:settle 1.8s .25s cubic-bezier(.2,.7,.2,1) both}
+  .bio-head .label{animation:fade 1s .2s both}
+
+  /* 2. On scroll (progressive enhancement: browsers without support just show everything) */
+  @supports (animation-timeline:view()){
+    .intro .big,.intro-cols>p,.intro-cols .meta-list,.work,.services li,
+    .member-text,.timeline li,.recog .big,.caps li,.contact .mega,
+    .contact-grid>*,.table-wrap{
+      animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    .intro-cols figure,.work figure,.member figure{
+      animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+    .work img,.member img{animation:settle linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
+  }
+
+  /* 3. Scroll progress bar (uses a pseudo-element, no extra HTML) */
+  @supports (animation-timeline:scroll()){
+    body::after{content:"";position:fixed;left:0;top:0;width:100%;height:3px;background:var(--accent);
+      transform-origin:0 50%;z-index:60;pointer-events:none;
+      animation:progress linear both;animation-timeline:scroll(root)}
+  }
+}
+
+/* ===== PAGE THEMES: tiap page membalik warna (index gelap, profil terang, galeri gelap, data terang) ===== */
+tbody tr:hover{background:rgba(128,128,128,.14)}
+
+/* ===== HERO: crossfade gambar (struktur) ===== */
+.hero-media{position:relative;min-height:clamp(260px,50vh,560px)}
+.hero-media img{position:absolute;inset:0;height:100%;max-height:none;object-fit:cover}
+.hero-media img+img{opacity:0}
+.intro-cols figure{overflow:hidden}
+.marquee{overflow:hidden;margin-top:var(--sec);border-block:1px solid var(--line-color);padding:12px 0}
+.marquee-track{display:flex;width:max-content}
+.marquee p{margin:0;white-space:nowrap;font-size:clamp(36px,8vw,120px);font-weight:600;letter-spacing:-.04em;line-height:1}
+.intro{padding-top:calc(var(--sec)*.7)}
+.loader,.arrow{display:inline-block}.loader{display:none}
+/* garis pemisah antarbagian */
+.intro,.work-sec,.approach,.story,.recog,.contact{position:relative}
+.intro::before,.work-sec::before,.approach::before,.story::before,.recog::before,.contact::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--line-color);transform-origin:0 50%}
+/* hover: garis bawah menyapu */
+.more a,.links a,.site-footer a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;border-bottom:0;transition:background-size .35s,opacity .3s}
+.more a:hover,.links a:hover,.site-footer a:hover,.more a:focus-visible,.links a:focus-visible,.site-footer a:focus-visible{background-size:100% 1px;opacity:1}
+.more a,.links a{background-size:100% 1px}.more a:hover,.links a:hover{background-size:0 1px}
+/* parallax: scale statis + translate bergerak (hover memakai scale) */
+.work img,.member img,.intro-cols img{transform:none;scale:1.18;transition:scale .9s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.work a:hover img,.work a:focus-visible img{transform:none;scale:1.26;opacity:.85}
+
+/* ===== VIEW TRANSITION antar-page (CSS only) ===== */
+@view-transition{navigation:auto}
+@keyframes vt-out{to{opacity:0;transform:translateY(-2.5%)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(2.5%)}}
+::view-transition-old(root){animation:.55s cubic-bezier(.7,0,.2,1) both vt-out}
+::view-transition-new(root){animation:.7s .1s cubic-bezier(.2,.7,.2,1) both vt-in}
+
+/* ===== MOTION ===== */
+@keyframes wipe{to{transform:translateY(-101%);visibility:hidden}}
+@keyframes blink{0%,100%{opacity:.2}50%{opacity:1}}
+@keyframes marq{to{transform:translateX(-50%)}}
+@keyframes cycle{0%{opacity:0}8%{opacity:1}33%{opacity:1}41%{opacity:0}100%{opacity:0}}
+@keyframes drift{from{translate:0 -7%}to{translate:0 7%}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media (prefers-reduced-motion:no-preference){
+  /* loading screen (hanya index) */
+  .loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--text-primary);color:var(--page-bg);pointer-events:none;
+    font-size:clamp(28px,6vw,80px);font-weight:600;letter-spacing:-.04em;animation:wipe .9s .9s cubic-bezier(.7,0,.2,1) forwards}
+  .loader span{animation:blink .9s ease-in-out infinite}
+  .hero .mega{animation:rise 1.1s 1.1s cubic-bezier(.2,.7,.2,1) both}
+  .hero-top,.hero-foot{animation:fade 1.2s 1.6s both}
+  .hero-media{animation:reveal 1.3s 1.05s cubic-bezier(.7,0,.2,1) both}
+  /* gambar hero bergantian */
+  .hero-media img{animation:cycle 12s 1.2s infinite both}
+  .hero-media img:nth-child(2){animation-delay:5.2s}
+  .hero-media img:nth-child(3){animation-delay:9.2s}
+  /* indikator scroll */
+  .arrow{animation:bob 1.4s ease-in-out infinite}
+  /* marquee */
+  .marquee-track{animation:marq 22s linear infinite}.marquee:hover .marquee-track{animation-play-state:paused}
+  @supports (animation-timeline:view()){
+    .work img,.member img,.intro-cols img{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    .intro::before,.work-sec::before,.approach::before,.story::before,.recog::before,.contact::before{animation:grow linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+  .marquee-track{transform:none}
+}
+
+/* ===== v3: LOADING SINGKAT, PAGE WIPE, STAGGER, TOKEN OVERLAY ===== */
+/* wipe antar-page: halaman baru menyapu naik, warna tema baru langsung terlihat tanpa layar kosong */
+@keyframes vt-old{to{opacity:.35;transform:translateY(-4%)}}
+@keyframes vt-wipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+::view-transition-old(root){animation:.7s cubic-bezier(.7,0,.2,1) both vt-old}
+::view-transition-new(root){animation:.7s cubic-bezier(.7,0,.2,1) both vt-wipe}
+
+@media (prefers-reduced-motion:no-preference){
+  /* loader dipersingkat (~1.2 dtk) dan memakai token overlay */
+  .loader{background:var(--overlay-color);color:var(--on-overlay);animation:wipe .7s .5s cubic-bezier(.7,0,.2,1) forwards}
+  .hero .mega{animation:rise 1s .65s cubic-bezier(.2,.7,.2,1) both}
+  .hero-media{animation:reveal 1.1s .6s cubic-bezier(.7,0,.2,1) both}
+  .hero-top,.hero-foot{animation:fade 1s 1s both}
+  .hero-media img{animation:cycle 12s .8s infinite both}
+  .hero-media img:nth-child(2){animation-delay:4.8s}
+  .hero-media img:nth-child(3){animation-delay:8.8s}
+
+  @supports (animation-timeline:view()){
+    /* label & metadata section */
+    section:not(.bio-head)>.label{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+    /* stagger ringan profil tim: tiap anak mulai sedikit lebih akhir */
+    .member-text{animation:none}
+    .member-text>*{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+    .member-text>:nth-child(2){animation-range:entry 6% entry 46%}
+    .member-text>:nth-child(3){animation-range:entry 12% entry 52%}
+    .member-text>:nth-child(4){animation-range:entry 18% entry 58%}
+    .member-text>:nth-child(5){animation-range:entry 24% entry 64%}
+    .member-text>:nth-child(6){animation-range:entry 30% entry 70%}
+  }
+}
+
+/* ===== GRAIN / NOISE (CSS + SVG tile, tanpa JS/canvas) =====
+   Tile 160px dari feTurbulence, abu-abu netral tanpa blend-mode:
+   di latar gelap tampak sebagai butir terang, di latar terang sebagai butir gelap.
+   Setel lewat token: --grain-opacity (intensitas), --grain-speed (kecepatan). */
+body::before{
+  content:"";position:fixed;inset:-128px;z-index:-1;pointer-events:none;contain:strict;
+  opacity:var(--grain-opacity);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='2 0 0 0 -.5 2 0 0 0 -.5 2 0 0 0 -.5 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px 160px}
+/* lapisan grain tampil di atas warna latar root, di bawah semua konten */
+@keyframes grain{
+  0%{transform:translate(0,0)}
+  20%{transform:translate(-37px,23px)}
+  40%{transform:translate(29px,-51px)}
+  60%{transform:translate(-61px,-17px)}
+  80%{transform:translate(43px,59px)}
+  100%{transform:translate(0,0)}}
+@media (prefers-reduced-motion:no-preference){
+  body::before{will-change:transform;animation:grain var(--grain-speed) steps(1,end) infinite}
+}
+@media (prefers-contrast:more){body::before{opacity:calc(var(--grain-opacity)/2)}}
+@media print{body::before{display:none}}
+
+/* ===== v4: TEMA PER HALAMAN (token pada <html>) ===== */
+html{background:var(--page-bg);color:var(--text-primary)}
+body{background:transparent}
+/* Work: off-white hangat */
+html,html.theme-work{--page-bg:#FCF6F4;--text-primary:#100F0F;--text-secondary:#6a6560;--accent:#D8431F;--line-color:#dcd3cf;--overlay-color:#100F0F;--on-overlay:#FCF6F4;--grain-opacity:.07;color-scheme:light}
+/* Bio / Team: gelap */
+html.theme-team{--page-bg:#100F0F;--text-primary:#FCF6F4;--text-secondary:#9b958f;--accent:#FF6B45;--line-color:#2b2928;--overlay-color:#FCF6F4;--on-overlay:#100F0F;--grain-opacity:.09;color-scheme:dark}
+/* Contact: abu-abu muda */
+html.theme-contact{--page-bg:#E5E5E5;--text-primary:#100F0F;--text-secondary:#585858;--accent:#C23A18;--line-color:#c3c3c3;--overlay-color:#100F0F;--on-overlay:#E5E5E5;--grain-opacity:.08;color-scheme:light}
+
+/* ===== NAVBAR editorial ===== */
+.site-header{mix-blend-mode:normal;color:var(--text-primary);pointer-events:none;padding-bottom:30px;
+  background:linear-gradient(var(--page-bg) 45%,transparent)}
+.wordmark,.site-header nav a,.menu-btn{pointer-events:auto}
+.site-header nav a{opacity:.65;transition:opacity .25s,border-color .25s}
+.site-header nav a:hover,.site-header nav a:focus-visible,.site-header nav a[aria-current="page"]{opacity:1}
+.site-header nav a[aria-current="page"]{border-color:currentColor}
+.menu-btn{position:relative;z-index:70}
+.menu-toggle:checked~.menu-btn{color:var(--on-overlay)}
+@media(max-width:640px){
+  .site-header nav{pointer-events:auto}
+  .site-header nav::before{content:"Nama Studio®";position:absolute;top:16px;left:var(--pad);font-size:18px;font-weight:600;letter-spacing:-.02em}
+  .site-header nav a{opacity:.65}.site-header nav a[aria-current="page"]{opacity:1}
+}
+
+/* ===== HALAMAN CONTACT ===== */
+.kp-blocks{padding-top:var(--gap);padding-bottom:var(--sec)}
+.kp-list li{display:grid;grid-template-columns:3fr 9fr;gap:var(--gap);padding:28px 0;border-top:1px solid var(--line-color);align-items:baseline}
+.kp-list li:last-child{border-bottom:1px solid var(--line-color)}
+.kp-list p{margin:0;max-width:40ch}
+.kp-list a{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .35s}
+.kp-list a:hover,.kp-list a:focus-visible{background-size:0 1px}
+.kp-link{font-size:clamp(26px,5.5vw,88px);letter-spacing:-.04em;line-height:1;font-weight:500;overflow-wrap:anywhere}
+@media(max-width:640px){.kp-list li{grid-template-columns:1fr;gap:6px}}
+
+/* ===== TRANSISI MASUK PER TUJUAN (gaya ditentukan oleh halaman TUJUAN) ===== */
+@keyframes vt-rise-in{from{opacity:0;transform:translateY(1.6%)}}
+@keyframes vt-wipe-up{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes vt-wipe-left{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+@keyframes vt-old-up{to{transform:translateY(-4%)}}
+@keyframes vt-old-left{to{transform:translateX(-4%)}}
+/* Work: dissolve lembut ke off-white + naik sedikit */
+html.theme-work::view-transition-old(root){animation:none}
+html.theme-work::view-transition-new(root){animation:.6s cubic-bezier(.2,.7,.2,1) both vt-rise-in}
+/* Team: tirai gelap naik dari bawah */
+html.theme-team::view-transition-old(root){animation:.75s cubic-bezier(.7,0,.2,1) both vt-old-up}
+html.theme-team::view-transition-new(root){animation:.75s cubic-bezier(.7,0,.2,1) both vt-wipe-up}
+/* Contact: wipe horizontal dari kanan */
+html.theme-contact::view-transition-old(root){animation:.65s cubic-bezier(.7,0,.2,1) both vt-old-left}
+html.theme-contact::view-transition-new(root){animation:.65s cubic-bezier(.7,0,.2,1) both vt-wipe-left}
+
+/* ===== ENTRANCE PER HALAMAN ===== */
+@keyframes maskUp{from{clip-path:inset(100% 0 0 0);transform:translateY(30%)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes maskX{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes slideL{from{clip-path:inset(0 0 0 100%);transform:translateX(10%)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes slideR{from{opacity:0;transform:translateX(-6%)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:no-preference){
+  /* loader hanya saat memuat langsung; tidak dipakai bila ada view transition */
+  html:active-view-transition .loader{display:none}
+  html:active-view-transition .hero .mega{animation-delay:.25s}
+  html:active-view-transition .hero-media{animation-delay:.2s}
+  html:active-view-transition .hero-top,html:active-view-transition .hero-foot{animation-delay:.6s}
+
+  /* WORK: kurasi bertahap; gambar masuk dengan crop vertikal */
+  .page-data tbody tr{animation:rise .8s .45s cubic-bezier(.2,.7,.2,1) both}
+  .page-data tbody tr:nth-child(2){animation-delay:.53s}.page-data tbody tr:nth-child(3){animation-delay:.61s}.page-data tbody tr:nth-child(4){animation-delay:.69s}
+  .page-data .table-wrap{animation:none}
+  @media(min-width:641px){
+    .page-galeri .work-grid .work:nth-child(-n+4){animation:rise .9s .35s cubic-bezier(.2,.7,.2,1) both}
+    .page-galeri .work-grid .work:nth-child(-n+4) figure{animation:reveal .9s .35s cubic-bezier(.7,0,.2,1) both}
+    .page-galeri .work-grid .work:nth-child(2),.page-galeri .work-grid .work:nth-child(2) figure{animation-delay:.45s}
+    .page-galeri .work-grid .work:nth-child(3),.page-galeri .work-grid .work:nth-child(3) figure{animation-delay:.55s}
+    .page-galeri .work-grid .work:nth-child(4),.page-galeri .work-grid .work:nth-child(4) figure{animation-delay:.65s}}
+  @media(max-width:640px){
+    .page-galeri .work-grid .work:first-child{animation:rise .9s .35s cubic-bezier(.2,.7,.2,1) both}
+    .page-galeri .work-grid .work:first-child figure{animation:reveal .9s .35s cubic-bezier(.7,0,.2,1) both}}
+
+  /* TEAM: judul naik lewat mask, potret terbuka dengan mask horizontal, teks berurutan */
+  .page-team .bio-head .mega{animation:maskUp 1.1s .2s cubic-bezier(.2,.7,.2,1) both}
+  .page-team .bio-head .meta-list{animation:fade .8s .7s both}
+  @supports (animation-timeline:view()){
+    .page-team .member figure{animation:maskX linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+  }
+
+  /* CONTACT: judul menyapu dari kanan, blok kontak masuk dari kiri bertahap */
+  .page-contact .bio-head .mega{animation:slideL 1s .2s cubic-bezier(.2,.7,.2,1) both}
+  .page-contact .kp-list li{animation:slideR .8s .5s cubic-bezier(.2,.7,.2,1) both}
+  .page-contact .kp-list li:nth-child(2){animation-delay:.6s}.page-contact .kp-list li:nth-child(3){animation-delay:.7s}.page-contact .kp-list li:nth-child(4){animation-delay:.8s}
+}

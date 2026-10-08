@@ -1,0 +1,136 @@
+/* ===== NAMA STUDIO — LUXE ANIMATION SYSTEM =====
+   Preloader sinematik • reveal on scroll • parallax • kursor kustom •
+   transisi halaman • marquee reaktif • magnetic • progress bar • grain.
+   Semua non-esensial dimatikan saat prefers-reduced-motion. */
+
+:root{
+  --ease-luxe:cubic-bezier(.16,1,.3,1);
+  --ease-snap:cubic-bezier(.22,1,.36,1);
+  --wipe:#141210;
+}
+
+/* ---------- progress bar ---------- */
+.luxe-progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:120;pointer-events:none;background:transparent}
+.luxe-progress span{display:block;height:100%;width:100%;background:linear-gradient(90deg,#2B4EFF,#B79CFF,#2B4EFF);transform-origin:0 50%;transform:scaleX(0)}
+
+/* ---------- grain overlay ---------- */
+.luxe-grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:110;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 8s steps(10) infinite}
+@keyframes grain{
+  0%,100%{transform:translate(0,0)}10%{transform:translate(-2%,-3%)}30%{transform:translate(3%,-2%)}
+  50%{transform:translate(-3%,2%)}70%{transform:translate(2%,3%)}90%{transform:translate(-1%,1%)}}
+
+/* ---------- preloader ---------- */
+.luxe-loader{position:fixed;inset:0;z-index:200;background:var(--wipe);color:#FCF6F4;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;
+  transition:transform 1s var(--ease-luxe);will-change:transform}
+.luxe-loader.done{transform:translateY(-101%)}
+.luxe-loader .l-word{font-weight:800;font-size:clamp(2rem,6vw,4rem);letter-spacing:-.03em;text-transform:uppercase;overflow:hidden}
+.luxe-loader .l-word span{display:inline-block;transform:translateY(110%);animation:lUp .9s var(--ease-luxe) .1s forwards}
+@keyframes lUp{to{transform:translateY(0)}}
+.luxe-loader .l-count{font-size:.8rem;letter-spacing:.35em;opacity:.7}
+.luxe-loader .l-bar{width:min(320px,60vw);height:1px;background:rgba(255,255,255,.2);overflow:hidden}
+.luxe-loader .l-bar i{display:block;height:100%;width:100%;background:#FCF6F4;transform-origin:0 50%;transform:scaleX(0)}
+
+/* ---------- page transition wipe ---------- */
+.luxe-wipe{position:fixed;inset:0;z-index:190;background:var(--wipe);pointer-events:none;
+  transform:scaleY(0);transform-origin:50% 100%}
+.luxe-wipe.go{animation:wipeGo .9s var(--ease-luxe) forwards}
+@keyframes wipeGo{0%{transform:scaleY(0);transform-origin:50% 100%}45%{transform:scaleY(1);transform-origin:50% 100%}55%{transform:scaleY(1);transform-origin:50% 0}100%{transform:scaleY(0);transform-origin:50% 0}}
+
+/* ---------- custom cursor ---------- */
+.luxe-dot,.luxe-ring{position:fixed;top:0;left:0;z-index:180;pointer-events:none;border-radius:50%;display:none}
+@media(hover:hover) and (pointer:fine){.luxe-dot,.luxe-ring{display:block}}
+.luxe-dot{width:8px;height:8px;background:#2B4EFF;transform:translate(-50%,-50%)}
+.luxe-ring{width:38px;height:38px;border:1px solid rgba(20,18,16,.45);transform:translate(-50%,-50%);
+  transition:width .35s var(--ease-luxe),height .35s var(--ease-luxe),background .35s,border-color .35s}
+.luxe-ring.is-hover{width:72px;height:72px;background:rgba(43,78,255,.08);border-color:#2B4EFF}
+.luxe-ring.is-view{width:92px;height:92px;background:#141210;border-color:#141210}
+.luxe-ring.is-view::after{content:"VIEW";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#FCF6F4;font-size:.62rem;letter-spacing:.2em}
+
+/* ---------- split text (hero) ---------- */
+.split-mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em;margin-bottom:-.06em}
+.split-ch{display:inline-block;transform:translateY(115%) rotate(4deg);opacity:0;will-change:transform}
+html.luxe-ready .split-ch{animation:chUp 1.1s var(--ease-luxe) forwards;animation-delay:var(--d,0s)}
+@keyframes chUp{to{transform:translateY(0) rotate(0);opacity:1}}
+
+/* ---------- scroll reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(46px);will-change:transform,opacity}
+[data-reveal="left"]{transform:translateX(-56px)}
+[data-reveal="right"]{transform:translateX(56px)}
+[data-reveal="zoom"]{transform:scale(.94)}
+html.luxe-ready [data-reveal].in{opacity:1;transform:none;transition:opacity 1s var(--ease-luxe),transform 1.1s var(--ease-luxe);transition-delay:var(--d,0s)}
+/* stagger anak */
+[data-reveal-group].in [data-reveal]{opacity:1;transform:none;transition:opacity 1s var(--ease-luxe),transform 1.1s var(--ease-luxe);transition-delay:var(--d,0s)}
+
+/* ---------- parallax images ---------- */
+[data-parallax]{overflow:hidden}
+[data-parallax] img{will-change:transform}
+html.luxe-ready [data-parallax] img{transform:translateY(var(--py,0px)) scale(1.15)}
+
+/* ---------- hero entrance ---------- */
+.hero-media img{opacity:0;transform:translateY(60px) scale(.97)}
+html.luxe-ready .hero-media img{animation:heroImg 1.3s var(--ease-luxe) forwards;animation-delay:var(--d,0s)}
+.hero-media img:nth-child(1){--d:.55s}.hero-media img:nth-child(2){--d:.7s}.hero-media img:nth-child(3){--d:.85s}
+@keyframes heroImg{to{opacity:1;transform:none}}
+/* ken burns halus pada hero pertama */
+html.luxe-ready .hero-media img:first-child{animation:heroImg 1.3s var(--ease-luxe) .55s forwards,kenburns 14s ease-in-out 2s infinite alternate}
+@keyframes kenburns{from{scale:1}to{scale:1.07}}
+
+/* ---------- work cards luxe hover ---------- */
+.work{perspective:900px}
+.work a{transition:transform .5s var(--ease-luxe)}
+.work figure{position:relative}
+.work figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,18,16,.35),transparent 55%);
+  opacity:0;transition:opacity .5s}
+.work a:hover figure::after{opacity:1}
+.work figure img{transition:transform 1s var(--ease-luxe),filter 1s}
+.work a:hover figure img{transform:scale(1.07)!important;filter:saturate(1.08)}
+.work-meta h3{position:relative;overflow:hidden}
+.work-meta h3::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:currentColor;
+  transform:scaleX(0);transform-origin:100% 50%;transition:transform .5s var(--ease-luxe)}
+.work a:hover .work-meta h3::after{transform:scaleX(1);transform-origin:0 50%}
+
+/* ---------- link / button mewah ---------- */
+.more a,.pager a,.kp-link{position:relative;transition:color .4s,background .4s,border-color .4s}
+.contact .mega a{background-image:linear-gradient(currentColor,currentColor);background-size:0% 4px;background-repeat:no-repeat;background-position:0 92%;
+  transition:background-size .7s var(--ease-luxe)}
+.contact .mega a:hover{background-size:100% 4px}
+.magnetic{will-change:transform;transition:transform .3s var(--ease-snap)}
+
+/* ---------- marquee reaktif ---------- */
+.marquee-track{will-change:transform}
+html.luxe-ready .marquee-track{animation:none}
+
+/* ---------- header hide/show ---------- */
+.site-header{transition:transform .6s var(--ease-luxe),background .4s,box-shadow .4s}
+html.luxe-hide-header .site-header{transform:translateY(-110%)}
+html.luxe-scrolled .site-header{box-shadow:0 8px 30px rgba(20,18,16,.08)}
+
+/* ---------- filter buttons ---------- */
+.filter-bar button{transition:transform .35s var(--ease-luxe),background .35s,color .35s,border-color .35s}
+.filter-bar button:hover{transform:translateY(-2px)}
+.filter-bar button:active{transform:translateY(0) scale(.96)}
+
+/* ---------- detail page ---------- */
+.detail-hero figure{overflow:hidden;border-radius:14px}
+#d-hero{animation:heroZoom 1.6s var(--ease-luxe) both}
+@keyframes heroZoom{from{transform:scale(1.08);opacity:.4}to{transform:scale(1);opacity:1}}
+.detail-meta>div{opacity:0;transform:translateY(24px)}
+html.luxe-ready .detail-meta>div{animation:chUp .9s var(--ease-luxe) forwards;animation-delay:var(--d,0s)}
+.detail-meta>div:nth-child(1){--d:.15s}.detail-meta>div:nth-child(2){--d:.25s}
+.detail-meta>div:nth-child(3){--d:.35s}.detail-meta>div:nth-child(4){--d:.45s}
+
+/* ---------- loader lama (nonaktif, diganti luxe) ---------- */
+.loader{display:none!important}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  [data-reveal]{opacity:1;transform:none}
+  .split-ch{opacity:1;transform:none;animation:none}
+  .luxe-grain,.luxe-dot,.luxe-ring{display:none}
+  .luxe-loader{display:none}
+}
