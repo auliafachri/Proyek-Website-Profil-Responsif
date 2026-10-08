@@ -1,4 +1,4 @@
-/* Nama Studio — HTML5 + CSS3 murni. Font: system stack (tanpa lisensi). */
+/* Lima Studio — HTML5 + CSS3 murni. Font: system stack (tanpa lisensi). */
 :root{--pad:clamp(16px,3vw,40px);--gap:clamp(12px,1.6vw,24px);--sec:clamp(80px,14vw,200px)}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
@@ -147,6 +147,7 @@ tbody tr:hover{background:rgba(128,128,128,.14)}
 /* ===== HERO: crossfade gambar (struktur) ===== */
 .hero-media{position:relative;min-height:clamp(260px,50vh,560px)}
 .hero-media img{position:absolute;inset:0;height:100%;max-height:none;object-fit:cover}
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-media img+img{opacity:0}
 .intro-cols figure{overflow:hidden}
 .marquee{overflow:hidden;margin-top:var(--sec);border-block:1px solid var(--line-color);padding:12px 0}
@@ -282,7 +283,7 @@ html.theme-contact{--page-bg:#E5E5E5;--text-primary:#100F0F;--text-secondary:#58
 .menu-toggle:checked~.menu-btn{color:var(--on-overlay)}
 @media(max-width:640px){
   .site-header nav{pointer-events:auto}
-  .site-header nav::before{content:"Nama Studio®";position:absolute;top:16px;left:var(--pad);font-size:18px;font-weight:600;letter-spacing:-.02em}
+  .site-header nav::before{content:"Lima Studio®";position:absolute;top:16px;left:var(--pad);font-size:18px;font-weight:600;letter-spacing:-.02em}
   .site-header nav a{opacity:.65}.site-header nav a[aria-current="page"]{opacity:1}
 }
 
@@ -351,3 +352,12 @@ html.theme-contact::view-transition-new(root){animation:.65s cubic-bezier(.7,0,.
   .page-contact .kp-list li{animation:slideR .8s .5s cubic-bezier(.2,.7,.2,1) both}
   .page-contact .kp-list li:nth-child(2){animation-delay:.6s}.page-contact .kp-list li:nth-child(3){animation-delay:.7s}.page-contact .kp-list li:nth-child(4){animation-delay:.8s}
 }
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;max-height:none;display:block;object-fit:cover;
+  background:var(--line-color);
+  filter:saturate(.92) contrast(1.03);
+  opacity:0;transform:translateY(60px) scale(.97)}
+html.luxe-ready .hero-media video{animation:heroImg 1.3s var(--ease-luxe) .55s forwards}
+.hero-media:has(video)::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(20,18,16,.28),transparent 45%)}
+@media (max-width:640px){.hero-media:has(video){min-height:clamp(220px,42svh,500px)}}
+@media (prefers-reduced-motion:reduce){.hero-media video{opacity:1;transform:none;animation:none}}

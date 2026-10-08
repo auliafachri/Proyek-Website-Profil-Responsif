@@ -1,4 +1,4 @@
-/* NAMA STUDIO — luxe.js : preloader, split teks, reveal, parallax,
+/* LIMA STUDIO — luxe.js : preloader, split teks, reveal, parallax,
    kursor kustom, magnetic, header hide, progress, marquee reaktif, transisi halaman.
    File://-safe, tanpa dependensi. Hormati prefers-reduced-motion. */
 (function () {
